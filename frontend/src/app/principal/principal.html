@@ -1,0 +1,40 @@
+<form [formGroup]="form">
+  <input type="hidden" formControlName="id" />
+  <input type="text" formControlName="name" placeholder="Nome" class="form-control" />
+  <input type="number" formControlName="grade1" placeholder="Nota 1" class="form-control" />
+  <input type="number" formControlName="grade2" placeholder="Nota 2" class="form-control" />
+
+  @if (btnInsert()) {
+    <input type="button" value="Cadastrar" class="btn btn-primary" />
+  } @else {
+    <input type="button" value="Alterar" class="btn btn-primary" />
+    <input type="button" value="Remover" class="btn btn-primary" />
+    <input type="button" value="Cancelar" class="btn btn-primary" />
+  }
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Nota 1</th>
+      <th>Nota 2</th>
+      <th>Média</th>
+      <th>Selecionar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (student of vetor(); track student.id) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.grade1 }}</td>
+        <td>{{ student.grade2 }}</td>
+        <td>{{ (student.grade1 + student.grade2) / 2 }}</td>
+        <td><button class="btn btn-primary" (click)="selectStudent($index)">Selecionar</button></td>
+      </tr>
+    }
+  </tbody>
+</table>
