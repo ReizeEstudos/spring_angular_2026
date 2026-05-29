@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class StudentService {
-  // URL base definida no seu @RequestMapping("/api/alunos")
   private readonly API = 'http://localhost:8080/api/students';
 
   constructor(private http: HttpClient) {}

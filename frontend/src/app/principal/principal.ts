@@ -1,12 +1,11 @@
 import { Component, computed, OnInit, signal } from '@angular/core';
 import { StudentService } from '../service/student-service';
 import { Student } from '../model/Student';
-import { JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-principal',
-  imports: [JsonPipe, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './principal.html',
   styleUrl: './principal.css',
 })
@@ -34,6 +33,28 @@ export class Principal implements OnInit {
 
   selectStudent(index: number): void {
     this.form.patchValue(this.vetor()[index]);
+    console.log(this.form.value);
     this.btnInsert.set(false);
+  }
+
+  cancel(): void {
+    this.form.reset();
+    this.btnInsert.set(true);
+  }
+
+  insert(): void {
+    this.service.insert(this.form.value as Student).subscribe((student) => {
+      this.vetor.update((students) => [...students, student]);
+      this.form.reset();
+    });
+  }
+
+  update(): void {
+    this.service.update(this.form.value as Student).subscribe((studentUpdated) => {
+      this.vetor.update((students) =>
+        students.map((student) => (student.id === studentUpdated.id ? studentUpdated : student)),
+      );
+      this.cancel();
+    });
   }
 }

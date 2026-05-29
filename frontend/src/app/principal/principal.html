@@ -5,11 +5,11 @@
   <input type="number" formControlName="grade2" placeholder="Nota 2" class="form-control" />
 
   @if (btnInsert()) {
-    <input type="button" value="Cadastrar" class="btn btn-primary" />
+    <input type="button" (click)="insert()" value="Cadastrar" class="btn btn-primary" />
   } @else {
-    <input type="button" value="Alterar" class="btn btn-primary" />
+    <input type="button" (click)="update()" value="Alterar" class="btn btn-primary" />
     <input type="button" value="Remover" class="btn btn-primary" />
-    <input type="button" value="Cancelar" class="btn btn-primary" />
+    <input type="button" (click)="cancel()" value="Cancelar" class="btn btn-primary" />
   }
 </form>
 
@@ -33,7 +33,9 @@
         <td>{{ student.grade1 }}</td>
         <td>{{ student.grade2 }}</td>
         <td>{{ (student.grade1 + student.grade2) / 2 }}</td>
-        <td><button class="btn btn-primary" (click)="selectStudent($index)">Selecionar</button></td>
+        <td>
+          <button class="btn btn-primary" (click)="selectStudent($index)">Selecionar</button>
+        </td>
       </tr>
     }
   </tbody>
