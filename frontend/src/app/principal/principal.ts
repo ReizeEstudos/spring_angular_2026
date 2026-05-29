@@ -32,8 +32,12 @@ export class Principal implements OnInit {
   }
 
   selectStudent(index: number): void {
-    this.form.patchValue(this.vetor()[index]);
-    console.log(this.form.value);
+    const student = this.vetor()[index]
+    this.form.patchValue({
+      id: student.id ?? '',
+      name: student.name ?? '',
+      grade1: student.grade1 != null ? Number(student.grade1) : null,
+      grade2: student.grade2 != null ? Number(student.grade2) : null,});
     this.btnInsert.set(false);
   }
 
