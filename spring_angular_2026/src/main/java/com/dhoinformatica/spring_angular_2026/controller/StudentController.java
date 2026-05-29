@@ -38,7 +38,7 @@ public class StudentController {
 
     @PutMapping("/update/{id}")
     public Student update(@PathVariable UUID id, @RequestBody Student student) {
-        student.setUuid(id);
+        student.setId(id);
         return repository.save(student);
     }
 

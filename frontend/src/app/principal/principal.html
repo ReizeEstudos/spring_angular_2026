@@ -8,7 +8,7 @@
     <input type="button" (click)="insert()" value="Cadastrar" class="btn btn-primary" />
   } @else {
     <input type="button" (click)="update()" value="Alterar" class="btn btn-primary" />
-    <input type="button" value="Remover" class="btn btn-primary" />
+    <input type="button" (click)="delete()" value="Remover" class="btn btn-primary" />
     <input type="button" (click)="cancel()" value="Cancelar" class="btn btn-primary" />
   }
 </form>
@@ -26,7 +26,7 @@
   </thead>
 
   <tbody>
-    @for (student of vetor(); track $index) {
+    @for (student of vetor(); track student.id) {
       <tr>
         <td>{{ $index + 1 }}</td>
         <td>{{ student.name }}</td>

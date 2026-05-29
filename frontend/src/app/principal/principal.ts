@@ -32,12 +32,7 @@ export class Principal implements OnInit {
   }
 
   selectStudent(index: number): void {
-    const student = this.vetor()[index]
-    this.form.patchValue({
-      id: student.id ?? '',
-      name: student.name ?? '',
-      grade1: student.grade1 != null ? Number(student.grade1) : null,
-      grade2: student.grade2 != null ? Number(student.grade2) : null,});
+    this.form.patchValue(this.vetor()[index]);
     this.btnInsert.set(false);
   }
 
@@ -58,6 +53,14 @@ export class Principal implements OnInit {
       this.vetor.update((students) =>
         students.map((student) => (student.id === studentUpdated.id ? studentUpdated : student)),
       );
+      this.cancel();
+    });
+  }
+
+  delete(): void {
+    const id = this.form.value.id;
+    this.service.delete(id ?? '').subscribe(() => {
+      this.vetor.update((students) => students.filter((student) => student.id !== id));
       this.cancel();
     });
   }
