@@ -1,0 +1,36 @@
+<!-- Tabela -->
+<table class="table table-striped">
+  <!-- Cabeçalho -->
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Nota 1</th>
+      <th>Nota 2</th>
+      <th>Média</th>
+      <th>Selecionar</th>
+    </tr>
+  </thead>
+
+  <!-- Corpo -->
+  <tbody>
+    @for (student of students(); track student.id) {
+      <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.grade1 }}</td>
+        <td>{{ student.grade2 }}</td>
+        <td>
+          {{ (student.grade1 + student.grade2) / 2 }}
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="select($index)">Selecionar</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6" class="text-center">Nenhum aluno cadastrado.</td>
+      </tr>
+    }
+  </tbody>
+</table>

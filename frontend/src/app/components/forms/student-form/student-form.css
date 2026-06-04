@@ -1,0 +1,10 @@
+form {
+  width: 50%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+input {
+  margin-bottom: 10px;
+  margin-left: 10px; /* <- Esqueci de adicionar essa propriedade, por isso nÃ£o aparece no vÃ­deo.*/
+}

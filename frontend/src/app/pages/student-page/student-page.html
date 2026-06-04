@@ -1,0 +1,10 @@
+<app-student-form
+  [formStudent]="formStudent"
+  [visibilityBtn]="btnInsert()"
+  (toInsert)="insert()"
+  (toUpdate)="update()"
+  (toRemove)="remove()"
+  (toCancel)="cancel()"
+>
+</app-student-form>
+<app-student-table [students]="vetor()" (toSelect)="selectStudent($event)"></app-student-table>

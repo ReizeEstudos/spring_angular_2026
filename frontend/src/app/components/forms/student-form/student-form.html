@@ -1,0 +1,17 @@
+<!-- Formulário -->
+<form [formGroup]="formStudent()">
+  <!-- Inputs (hidden, text e number) -->
+  <input type="hidden" formControlName="id" />
+  <input type="text" formControlName="name" placeholder="Nome" class="form-control mb-2" />
+  <input type="number" formControlName="grade1" placeholder="Nota 1" class="form-control mb-2" />
+  <input type="number" formControlName="grade2" placeholder="Nota 2" class="form-control mb-2" />
+
+  <!-- Inputs (button) -->
+  @if (visibilityBtn()) {
+    <input type="button" value="Cadastrar" (click)="toInsert.emit()" class="btn btn-primary" />
+  } @else {
+    <input type="button" value="Alterar" (click)="toUpdate.emit()" class="btn btn-primary" />
+    <input type="button" value="Remover" (click)="toRemove.emit()" class="btn btn-primary" />
+    <input type="button" value="Cancelar" (click)="toCancel.emit()" class="btn btn-primary" />
+  }
+</form>
