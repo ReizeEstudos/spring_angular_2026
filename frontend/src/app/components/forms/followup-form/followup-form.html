@@ -1,1 +1,18 @@
-<p>followup-form works!</p>
+<form [formGroup]="form()">
+  <select formControlName="studentId" class="form-select">
+    <option value="">Selecione um aluno</option>
+    @for (s of students(); track s.id) {
+      <option [value]="s.id">{{ s.name }}</option>
+    }
+  </select>
+
+  <input type="date" formControlName="date" class="form-control" />
+
+  <textarea
+    placeholder="Texto de acompanhamento"
+    formControlName="text"
+    class="form-control"
+  ></textarea>
+
+  <input type="button" value="Cadastrar" class="btn btn-primary" (click)="toSave.emit()" />
+</form>

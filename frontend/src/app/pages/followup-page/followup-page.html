@@ -1,2 +1,6 @@
-<app-followup-form></app-followup-form>
-<app-followup-table></app-followup-table>
+<app-followup-form
+  [form]="form"
+  [students]="vetorStudent()"
+  (toSave)="insert()"
+></app-followup-form>
+<app-followup-table [data]="vetorFollowUp()" (toRemove)="remove($event)"></app-followup-table>

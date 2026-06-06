@@ -1,1 +1,40 @@
-<p>followup-table works!</p>
+<!-- Filtragem -->
+<form>
+  <!-- #inputBusca serve para extrair do dado do input quando uso o inputBusca.value -->
+  <input
+    #inputBusca
+    type="text"
+    class="form-control"
+    placeholder="Filtrar pelo nome do aluno"
+    (input)="searchTerm.set(inputBusca.value)"
+  />
+</form>
+<table class="table table-striped">
+  <!-- Cabeçalho -->
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Aluno</th>
+      <th>Texto</th>
+      <th>Remover</th>
+    </tr>
+  </thead>
+
+  <!-- Corpo -->
+  <tbody>
+    @for (item of filterData(); track item.id) {
+      <tr>
+        <td>{{ item.date | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ item.student.name }}</td>
+        <td>{{ item.text }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="toRemove.emit(item.id)">Remover</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="4" class="text-center">Nenhum registro encontrado.</td>
+      </tr>
+    }
+  </tbody>
+</table>

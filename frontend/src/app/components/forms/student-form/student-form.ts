@@ -1,9 +1,9 @@
 import { Component, input, output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-student-form',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './student-form.html',
   styleUrl: './student-form.css',
 })

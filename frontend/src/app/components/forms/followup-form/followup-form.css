@@ -1,0 +1,11 @@
+form {
+  width: 50%;
+  margin: 2% auto;
+  text-align: center;
+}
+
+input,
+select,
+textarea {
+  margin-bottom: 10px;
+}
